@@ -1,1 +1,23 @@
-<p>global-sidebar works!</p>
+<aside class="h-screen w-64 bg-white dark:bg-gray-900 shadow-md fixed top-0 left-0 transition-all">
+  <div class="h-16 flex items-center justify-center border-b border-gray-200 dark:border-gray-700">
+    <img src="../../../../assets/images/medipulse-logo.jpg" class="w-auto h-auto rounded" alt="Medipulse logo" (click)="RedirectTodashboard()">
+  </div>
+
+  <nav class="mt-4">
+    <ul>
+      @for (link of navLinks; track link) {
+        <li>
+          <a [routerLink]="link.path"
+             [routerLinkActive]="'bg-gray-300 text-black font-bold'"
+             class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-300 hover:text-black font-bold">
+            <i [class]="link.icon" class="mr-2 text-blue-500"></i>
+            {{ link.label }}
+          </a>
+        </li>
+      }
+    </ul>
+  </nav>
+  <!-- <button (click)="toggleSidebar()" class="absolute top-6 right-0 p-1 rounded-md">
+  <i class="fas" [class]="isCollapsed ? 'fa-chevron-right' : 'fa-chevron-left'"></i>
+</button> -->
+</aside>

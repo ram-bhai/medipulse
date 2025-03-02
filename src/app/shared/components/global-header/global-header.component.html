@@ -1,1 +1,28 @@
-<p>global-header works!</p>
+<header class="fixed top-0 left-64 w-[calc(100%-16rem)] bg-white dark:bg-gray-800 h-16 flex items-center justify-end px-6 shadow-md transition-all duration-300">
+  
+  <!-- Theme Toggle -->
+  <button (click)="toggleTheme()" class="relative group p-2">
+    <i class="fas" [class]="isDarkMode ? 'fa-sun text-yellow-400' : 'fa-moon text-gray-600'"></i>
+    <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded-md opacity-0"> 
+      {{ isDarkMode ? 'Light Theme' : 'Dark Theme' }} 
+    </span>
+  </button>
+
+  <!-- User Profile / Login-Logout -->
+  @if (isUserLoggedIn) {
+    <button (click)="navigateToProfile()" class="relative group p-2">
+      <img src="../../../assets/images/user.png" class="w-8 h-8 rounded-full" alt="User"> 
+      <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded-md opacity-0">Profile</span>
+    </button>
+
+    <button (click)="logout()" class="relative group p-2">
+      <i class="fas fa-sign-out-alt text-red-500"></i>
+      <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded-md opacity-0">Logout</span>
+    </button>
+  } @else {
+    <button (click)="navigateToLogin()" class="relative group p-2">
+      <i class="fas fa-sign-in-alt text-blue-500"></i>
+      <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded-md opacity-0">Login</span>
+    </button>
+  }
+</header>

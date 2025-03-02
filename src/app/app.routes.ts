@@ -1,68 +1,70 @@
 import { Routes } from '@angular/router';
+import { ROUTES, AUTH_ROUTES } from './core/constants/routes.constants';
 
 export const routes: Routes = [
+    { path: '', redirectTo: ROUTES.DASHBOARD, pathMatch: 'full' },
     {
-        path: '',
+        path: ROUTES.DASHBOARD,
         loadComponent: () => import('./features/dashboard/dashboard.component')
             .then(m => m.DashboardComponent)
     },
     {
-        path: 'patients',
+        path: ROUTES.PATIENTS,
         loadComponent: () => import('./features/patients/patients-list/patients-list.component')
             .then(m => m.PatientsListComponent)
     },
     {
-        path: 'patients-detail/:id',
+        path: ROUTES.PATIENTS_DETAIL,
         loadComponent: () => import('./features/patients/patients-detail/patients-detail.component')
             .then(m => m.PatientsDetailComponent)
     },
     {
-        path: 'appointments',
+        path: ROUTES.APPOINTMENTS,
         loadComponent: () => import('./features/appointments/appointments-list/appointments-list.component')
             .then(m => m.AppointmentsListComponent)
     },
     {
-        path: 'appointments-detail/:id',
+        path: ROUTES.APPOINTMENTS_DETAIL,
         loadComponent: () => import('./features/appointments/appointments-detail/appointments-detail.component')
             .then(m => m.AppointmentsDetailComponent)
     },
     {
-        path: 'invoices',
+        path: ROUTES.INVOICES,
         loadComponent: () => import('./features/invoices/invoices-list/invoices-list.component')
             .then(m => m.InvoicesListComponent)
     },
     {
-        path: 'invoices-detail/:id',
+        path: ROUTES.INVOICES_DETAIL,
         loadComponent: () => import('./features/invoices/invoices-detail/invoices-detail.component')
             .then(m => m.InvoicesDetailComponent)
     },
     {
-        path: 'doctors',
+        path: ROUTES.DOCTORS,
         loadComponent: () => import('./features/doctors/doctors-list/doctors-list.component')
             .then(m => m.DoctorsListComponent)
     },
     {
-        path: 'doctors-detail/:id',
+        path: ROUTES.DOCTORS_DETAIL,
         loadComponent: () => import('./features/doctors/doctors-detail/doctors-detail.component')
             .then(m => m.DoctorsDetailComponent)
     },
     {
-        path: 'auth',
+        path: AUTH_ROUTES.ROOT,
         children: [
             {
-                path: 'login',
+                path: AUTH_ROUTES.LOGIN.replace('auth/', ''),
                 loadComponent: () => import('./features/auth/login/login.component')
                     .then(m => m.LoginComponent)
             },
             {
-                path: 'register',
+                path: AUTH_ROUTES.REGISTER.replace('auth/', ''),
                 loadComponent: () => import('./features/auth/register/register.component')
                     .then(m => m.RegisterComponent)
             }
         ]
     },
     {
-        path: '**',  // Wildcard Route for handling 404 errors
+        path: ROUTES.NOT_FOUND,  // Wildcard Route for handling 404 errors
         redirectTo: '',
         pathMatch: 'full'
     }

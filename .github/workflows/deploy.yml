@@ -1,0 +1,48 @@
+name: Deploy MediPulse
+
+on:
+  push:
+    branches:
+      - main  # Run CI/CD when code is pushed to 'main'
+
+jobs:
+  build:
+    name: Build & Deploy
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest] # Support all OS
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Angular App
+        run: npm run build --if-present
+
+      - name: Upload Build Artifacts (Optional)
+        uses: actions/upload-artifact@v3
+        with:
+          name: mediPulse-build
+          path: dist/medipulse  # Adjust this if needed
+
+      - name: Deploy to GitHub Pages (Optional)
+        if: success()
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist/medipulse
+
+      - name: Deploy to Firebase Hosting (Optional)
+        if: success()
+        run: |
+          npm install -g firebase-tools
+          firebase deploy --token ${{ secrets.FIREBASE_TOKEN }}
