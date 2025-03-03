@@ -29,7 +29,7 @@ jobs:
         run: npm run build --if-present
 
       - name: Upload Build Artifacts (Optional)
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: mediPulse-build
           path: dist/medipulse  # Adjust this if needed
