@@ -1,0 +1,25 @@
+$breakpoints: (
+  "xs": 480px,
+  "sm": 768px,
+  "md": 1024px,
+  "lg": 1280px,
+  "xl": 1600px
+);
+
+@mixin responsive($size) {
+  @media (max-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  
+  @include responsive(sm) {
+    padding: 0.5rem;
+    flex-direction: column;
+  }
+}

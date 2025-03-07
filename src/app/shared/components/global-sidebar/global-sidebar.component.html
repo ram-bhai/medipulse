@@ -1,6 +1,6 @@
-<aside class="h-screen w-64 bg-white dark:bg-gray-900 shadow-md fixed top-0 left-0 transition-all">
-  <div class="h-16 flex items-center justify-center border-b border-gray-200 dark:border-gray-700">
-    <img src="../../../../assets/images/medipulse-logo.jpg" class="w-auto h-auto rounded" alt="Medipulse logo" (click)="RedirectTodashboard()">
+<aside class="h-screen w-64 bg-[var(--sidebar-bg)] shadow-md fixed top-0 left-0 transition-all">
+  <div class="h-16 flex items-center justify-center border-b border-[var(--border-color)]">
+    <img src="../../../../assets/images/medipulse-logo.jpg" class="w-auto h-full" alt="Medipulse logo" (click)="RedirectTodashboard()">
   </div>
 
   <nav class="mt-4">
@@ -8,8 +8,8 @@
       @for (link of navLinks; track link) {
         <li>
           <a [routerLink]="link.path"
-             [routerLinkActive]="'bg-gray-300 text-black font-bold'"
-             class="block px-6 py-3 text-gray-700 dark:text-gray-300 hover:bg-gray-300 hover:text-black font-bold">
+             [routerLinkActive]="'bg-[var(--active-bg)] text-[var(--active-text)] font-bold'"
+             class="block px-6 py-3 text-[var(--text-color)] hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] font-bold">
             <i [class]="link.icon" class="mr-2 text-blue-500"></i>
             {{ link.label }}
           </a>

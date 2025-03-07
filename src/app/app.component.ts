@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { GlobalHeaderComponent } from "./shared/components/global-header/global-header.component";
 import { GlobalFooterComponent } from "./shared/components/global-footer/global-footer.component";
 import { GlobalSidebarComponent } from "./shared/components/global-sidebar/global-sidebar.component";
+import { ThemeService } from './core/services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -13,4 +14,11 @@ import { GlobalSidebarComponent } from "./shared/components/global-sidebar/globa
 })
 export class AppComponent {
   title = 'medipulse';
+  currentTheme = 'light';
+
+  constructor(private themeService: ThemeService) {
+    this.themeService.theme$.subscribe(theme => {
+      this.currentTheme = theme;
+    });
+  }
 }

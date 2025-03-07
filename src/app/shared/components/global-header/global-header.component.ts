@@ -21,17 +21,15 @@ export class GlobalHeaderComponent {
   ) {}
 
   ngOnInit(): void {
-
     this.isUserLoggedIn = this.storageService.get<boolean>('isLoggedIn') || false;
+    this.themeService.theme$.subscribe((theme) => {
+      this.isDarkMode = theme === 'dark';
+    });
   }
 
   toggleTheme() {
     this.themeService.toggleTheme();
   }
-
-  // get isDarkModeFunc() {
-  //   return this.themeService.currentTheme === 'dark';
-  // }
 
   navigateToLogin() {
     this.router.navigate(['/auth/login']);

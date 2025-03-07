@@ -1,11 +1,7 @@
-<header class="fixed top-0 left-64 w-[calc(100%-16rem)] bg-white dark:bg-gray-800 h-16 flex items-center justify-end px-6 shadow-md transition-all duration-300">
-  
+<header class="fixed top-0 left-64 w-[calc(100%-16rem)] bg-[var(--header-bg)] h-16 flex items-center justify-end px-6 shadow-md transition-all duration-300">  
   <!-- Theme Toggle -->
   <button (click)="toggleTheme()" class="relative group p-2">
     <i class="fas" [class]="isDarkMode ? 'fa-sun text-yellow-400' : 'fa-moon text-gray-600'"></i>
-    <span class="absolute -top-8 left-1/2 transform -translate-x-1/2 bg-gray-700 text-white text-xs px-2 py-1 rounded-md opacity-0"> 
-      {{ isDarkMode ? 'Light Theme' : 'Dark Theme' }} 
-    </span>
   </button>
 
   <!-- User Profile / Login-Logout -->
