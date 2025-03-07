@@ -1,0 +1,58 @@
+@import '../../../styles/themes.scss';
+@import '../../../styles/typography.scss';
+
+.register-container {
+  @apply flex items-center justify-center h-screen;
+
+  .register-box {
+    @apply w-full max-w-md bg-white p-6 rounded-lg shadow-md;
+
+    .logo-container {
+      @apply flex justify-center mb-4;
+
+      .logo {
+        @apply w-32 h-auto;
+      }
+    }
+
+    .form-group {
+      @apply mb-4;
+
+      label {
+        @apply block font-medium mb-1;
+      }
+
+      input, select {
+        @apply w-full p-2 border rounded;
+      }
+
+    //   .invalid {
+    //     @apply border-error;
+    //   }
+
+      .error {
+        @apply  text-sm mt-1;
+      }
+    }
+
+    .btn-register {
+      @apply w-full text-white py-2 rounded-md  disabled:bg-gray-400;
+    }
+
+    .social-login {
+      @apply text-center mt-4;
+
+      p {
+        @apply  mb-2;
+      }
+
+      .btn-social {
+        @apply w-full flex items-center justify-center py-2 mt-2 rounded-md text-white font-medium;
+
+        i {
+          @apply mr-2;
+        }
+      }
+    }
+  }
+}
