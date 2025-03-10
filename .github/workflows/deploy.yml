@@ -8,11 +8,8 @@ on:
 jobs:
   build:
     name: Build & Deploy
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest  # Use a single OS unless necessary
     timeout-minutes: 30
-    strategy:
-      matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest] # Support all OS
 
     steps:
       - name: Checkout Repository
@@ -24,10 +21,10 @@ jobs:
           node-version: 18
 
       - name: Install Dependencies
-        run: npm install
+        run: npm ci  # Faster & more reliable than npm install
 
       - name: Build Angular App
-        run: npm run build --if-present
+        run: npm run build
 
       - name: Upload Build Artifacts (Optional)
         uses: actions/upload-artifact@v4
@@ -39,6 +36,7 @@ jobs:
         if: success()
         uses: JamesIves/github-pages-deploy-action@v4
         with:
+          token: ${{ secrets.GH_PAGES_TOKEN }}
           branch: gh-pages
           folder: dist/medipulse
 
