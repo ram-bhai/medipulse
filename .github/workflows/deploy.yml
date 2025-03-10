@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 30
     strategy:
       matrix:
-        os: [windows-latest] # Support all OS
+        os: [windows-latest, ubuntu-latest, macos-latest] # Support all OS
 
     steps:
       - name: Checkout Repository
