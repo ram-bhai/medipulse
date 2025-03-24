@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AUTH_ROUTES, ROUTES } from '../../../core/constants/routes.constants';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-global-sidebar',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './global-sidebar.component.html',
   styleUrl: './global-sidebar.component.scss'
 })
 export class GlobalSidebarComponent {
-  isCollapsed = false;
+  @Input() isCollapsed!: boolean;
+  @Output() toggle = new EventEmitter<void>();
 
   navLinks = [
     { path: ROUTES.DASHBOARD, label: 'Home', icon: 'fas fa-home' },
@@ -23,6 +25,7 @@ export class GlobalSidebarComponent {
   constructor(private router: Router) {}
 
   toggleSidebar() {
+    this.toggle.emit();
     this.isCollapsed = !this.isCollapsed;
   }
 

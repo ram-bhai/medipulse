@@ -34,10 +34,19 @@ export class StorageService {
      */
     get<T>(key: string, isSession: boolean = false): T | null {
       if (!this.isBrowser()) return null;
+      
       const storage = isSession ? sessionStorage : localStorage;
       const data = storage.getItem(key);
-      return data ? (JSON.parse(data) as T) : null;
+    
+      if (!data) return null;
+    
+      try {
+        return JSON.parse(data) as T;
+      } catch (error) {
+        return data as unknown as T; // If parsing fails, return as string
+      }
     }
+    
   
     /**
      * Remove a specific item from storage

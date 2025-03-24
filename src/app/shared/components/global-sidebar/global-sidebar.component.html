@@ -1,23 +1,36 @@
-<aside class="h-screen w-64 bg-[var(--sidebar-bg)] shadow-md fixed top-0 left-0 transition-all">
-  <div class="h-16 flex items-center justify-center border-b border-[var(--border-color)]">
-    <img src="../../../../assets/images/medipulse-logo.jpg" class="w-auto h-full" alt="Medipulse logo" (click)="RedirectTodashboard()">
+<aside class="h-screen bg-[var(--sidebar-bg)] shadow-md fixed top-0 left-0 transition-all duration-300 flex flex-col"
+       [ngClass]="{ 'w-64': !isCollapsed, 'w-16': isCollapsed }">
+  
+  <!-- Logo -->
+  <div class="h-18 flex items-center justify-center border-b border-[var(--border-color)] transition-all duration-300">
+    <img [src]="isCollapsed 
+          ? 'https://res.cloudinary.com/dey4xxsow/image/upload/v1742755881/medipulse-mobile-logo_zzl4rw.png' 
+          : 'https://res.cloudinary.com/dey4xxsow/image/upload/v1741717956/medipulse-logo_vg1nzo.jpg'"
+         class="logo cursor-pointer transition-all duration-300"
+         [ngClass]="{ 'w-full': isCollapsed, 'w-100': !isCollapsed }"
+         alt="Medipulse logo"
+         (click)="RedirectTodashboard()">
   </div>
 
-  <nav class="mt-4">
-    <ul>
+  <!-- Navigation Menu -->
+  <nav class="mt-4 flex-1">
+    <ul class="space-y-2">
       @for (link of navLinks; track link) {
         <li>
           <a [routerLink]="link.path"
              [routerLinkActive]="'bg-[var(--active-bg)] text-[var(--active-text)] font-bold'"
-             class="block px-6 py-3 text-[var(--text-color)] hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)] font-bold">
-            <i [class]="link.icon" class="mr-2 text-blue-500"></i>
-            {{ link.label }}
+             class="flex items-center px-4 py-3 rounded-lg transition-all duration-300 hover:bg-[var(--hover-bg)] hover:text-[var(--hover-text)]">
+            <i [class]="link.icon" class="text-blue-500 text-xl"></i>
+            <span *ngIf="!isCollapsed" class="ml-4 text-base">{{ link.label }}</span>
           </a>
         </li>
       }
     </ul>
   </nav>
-  <!-- <button (click)="toggleSidebar()" class="absolute top-6 right-0 p-1 rounded-md">
-  <i class="fas" [class]="isCollapsed ? 'fa-chevron-right' : 'fa-chevron-left'"></i>
-</button> -->
+
+  <!-- Toggle Button -->
+   <button (click)="toggleSidebar()" 
+          class="absolute top-16 right-[-4px] p-2 bg-gray-700 rounded-full text-white transition-all duration-300">
+    <i class="fas" [class]="isCollapsed ? 'fa-chevron-right' : 'fa-chevron-left'"></i>
+  </button>
 </aside>

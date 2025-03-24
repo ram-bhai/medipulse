@@ -1,21 +1,26 @@
-<div class="flex min-h-screen" [attr.data-theme]="currentTheme">
+<div class="flex min-h-screen" *ngIf="isLoggedIn">
   <!-- Sidebar -->
-  <aside class="w-64 bg-[var(--sidebar-bg)] text-[var(--text-color)] p-4 fixed h-full">
-    <app-global-sidebar class="fixed left-0 top-0 h-full"/>
-  </aside>
+  <app-global-sidebar [isCollapsed]="isCollapsed" (toggle)="toggleSidebar()"></app-global-sidebar>
 
   <!-- Main Content -->
-  <div class="flex-1 flex flex-col ml-64">
-    <header class="bg-[var(--header-bg)] shadow-md p-4 fixed w-[calc(100%-16rem)] top-0 z-10">
-      <app-global-header />
-    </header>
+  <div class="flex-1 flex flex-col transition-all duration-300"
+       [ngClass]="{ 'ml-64': !isCollapsed, 'ml-16': isCollapsed }">
 
+    <!-- Header -->
+    <app-global-header [isCollapsed]="isCollapsed"></app-global-header>
+
+    <!-- Main Content -->
     <main class="flex-1 mt-16 p-6 bg-[var(--bg-color)]">
-      <router-outlet />
+      <app-global-loader></app-global-loader>
+      <router-outlet></router-outlet>
     </main>
 
-    <footer class="bg-[var(--footer-bg)] shadow-md p-4 text-center text-[var(--text-color)]">
-      <app-global-footer />
-    </footer>
+    <!-- Footer -->
+    <app-global-footer [isCollapsed]="isCollapsed"></app-global-footer>
   </div>
+</div>
+
+<!-- Show login page when user is not logged in -->
+<div *ngIf="!isLoggedIn">
+  <router-outlet></router-outlet>
 </div>

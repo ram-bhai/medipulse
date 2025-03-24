@@ -1,0 +1,14 @@
+.logo {
+    object-fit: contain;
+    height: 3.5rem; // Adjust for better visibility
+    transition: width 0.3s ease-in-out;
+}
+
+button {
+    transition: all 0.3s ease-in-out;
+}
+
+// Sidebar hover effect (optional)
+aside:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+}
