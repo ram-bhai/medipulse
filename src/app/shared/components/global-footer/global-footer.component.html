@@ -1,6 +1,9 @@
-<footer class="fixed bottom-0 left-64 w-[calc(100%-16rem)] bg-[var(--footer-bg)] h-12 flex items-center justify-center shadow-[var(--footer-shadow)]">
-    <p class="text-[var(--text-color)]">
-      &copy; 2024 MediPulse | <a routerLink="/privacy" class="text-blue-500">Privacy Policy</a> | <a routerLink="/terms" class="text-blue-500">Terms of Service</a>
-    </p>
-  </footer>
-  
+<footer class="fixed bottom-0 bg-[var(--header-bg)] h-12 flex items-center justify-center shadow-md transition-all duration-300"
+        [ngClass]="{ 'left-64 w-[calc(100%-16rem)]': !isCollapsed, 'left-16 w-[calc(100%-4rem)]': isCollapsed }">
+
+  <p class="text-[var(--text-color)]">
+    &copy; 2024 MediPulse | 
+    <a routerLink="/privacy" class="text-blue-500">Privacy Policy</a> | 
+    <a routerLink="/terms" class="text-blue-500">Terms of Service</a>
+  </p>
+</footer>

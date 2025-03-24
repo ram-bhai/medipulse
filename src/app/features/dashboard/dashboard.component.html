@@ -1,1 +1,95 @@
-<p>dashboard works!</p>
+<!-- Hero Section -->
+<div class="min-h-screen bg-gradient-to-r from-blue-500 to-blue-700 text-white flex flex-col justify-center items-center p-6 text-center">
+  
+    <div class="container mx-auto grid md:grid-cols-2 gap-10 items-center">
+      <!-- Left Side - Text Content -->
+      <div class="space-y-6 animate-fade-in">
+        <h1 class="text-5xl font-extrabold leading-tight">
+          Welcome to <span class="text-yellow-300">MediPulse</span>
+        </h1>
+        <p class="text-lg">
+          Your <strong>ultimate healthcare management solution</strong> that simplifies <strong>patient care, 
+          doctor appointments</strong>, and <strong>hospital operations</strong> with <strong>AI-driven</strong> efficiency.
+        </p>
+        <div class="mt-4 space-x-4">
+          <button [routerLink]="['/', AUTH_ROUTES.ROOT, AUTH_ROUTES.LOGIN]"
+                  class="px-6 py-3 bg-yellow-400 text-blue-900 font-semibold text-lg rounded-lg shadow-md hover:bg-yellow-500 transition">
+            Login
+          </button>
+          
+          <button [routerLink]="['/', AUTH_ROUTES.ROOT, AUTH_ROUTES.REGISTER]"
+                  class="px-6 py-3 bg-white text-blue-900 font-semibold text-lg rounded-lg shadow-md hover:bg-gray-200 transition">
+            Sign Up
+          </button>
+        </div>
+      </div>
+  
+      <!-- Right Side - Image -->
+      <div class="animate-slide-up">
+        <img src="https://res.cloudinary.com/dey4xxsow/image/upload/v1741717956/medipulse-logo_vg1nzo.jpg"
+             alt="MediPulse Dashboard"
+             class="w-full max-w-lg rounded-lg shadow-lg">
+      </div>
+    </div>
+  </div>
+  
+  <!-- Stats Section -->
+  <section class="bg-white py-12 text-gray-800 text-center">
+    <div class="container mx-auto grid md:grid-cols-4 gap-6">
+      
+      <div class="p-6">
+        <h2 class="text-4xl font-bold text-blue-600">10K+</h2>
+        <p class="text-lg">Patients Managed</p>
+      </div>
+  
+      <div class="p-6">
+        <h2 class="text-4xl font-bold text-blue-600">500+</h2>
+        <p class="text-lg">Doctors Registered</p>
+      </div>
+  
+      <div class="p-6">
+        <h2 class="text-4xl font-bold text-blue-600">99.9%</h2>
+        <p class="text-lg">Uptime Guarantee</p>
+      </div>
+  
+      <div class="p-6">
+        <h2 class="text-4xl font-bold text-blue-600">24/7</h2>
+        <p class="text-lg">Support Availability</p>
+      </div>
+  
+    </div>
+  </section>
+  
+  <!-- Testimonials Section -->
+  <section class="bg-gray-100 py-12 text-center">
+    <h2 class="text-3xl font-bold text-gray-800">What Our Users Say</h2>
+    <div class="container mx-auto grid md:grid-cols-3 gap-6 mt-6">
+      
+      <div class="p-6 bg-white shadow-md rounded-lg">
+        <p class="text-gray-700">"MediPulse transformed the way we manage hospital operations. <strong>Highly recommended!</strong>"</p>
+        <h3 class="text-lg font-semibold mt-3">- Dr. A. Sharma</h3>
+      </div>
+  
+      <div class="p-6 bg-white shadow-md rounded-lg">
+        <p class="text-gray-700">"Best <strong>EHR system</strong> we've used so far. <strong>Seamless and efficient!</strong>"</p>
+        <h3 class="text-lg font-semibold mt-3">- Dr. R. Mehta</h3>
+      </div>
+  
+      <div class="p-6 bg-white shadow-md rounded-lg">
+        <p class="text-gray-700">"MediPulse's appointment scheduling is a game-changer. <strong>Highly user-friendly!</strong>"</p>
+        <h3 class="text-lg font-semibold mt-3">- Patient S. Gupta</h3>
+      </div>
+  
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white py-6 text-center">
+    <p>&copy; 2025 MediPulse | All Rights Reserved.</p>
+    <p class="mt-2">
+      <a href="#" class="hover:underline">Privacy Policy</a> |
+      <a href="#" class="hover:underline">Terms of Service</a> |
+      <a href="#" class="hover:underline">Contact Us</a>
+    </p>
+  </footer>
+  

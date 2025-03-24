@@ -1,1 +1,66 @@
-<p>login works!</p>
+<div class="register-container">
+    <div class="register-card">
+      <h2 class="text-3xl font-bold text-center mb-2">
+        Welcome to <span class="text-primary">MediPulse</span>!
+      </h2>
+      <p class="text-center text-gray-500 dark:text-gray-400 mb-4">
+        Your healthcare, now seamless and digital.
+      </p>
+  
+      <form [formGroup]="signinForm" (ngSubmit)="onSubmit()" class="space-y-4">
+  
+        <!-- Email &Password Row -->
+        
+          <div class="form-group">
+            <label>Email <span class="text-red-500">*</span></label>
+            <input type="email" formControlName="email" class="form-input" placeholder="Enter your email"
+              [class.invalid]="f['email'].invalid && (f['email'].dirty || f['email'].touched)" />
+            <p class="error-message" *ngIf="f['email'].hasError('required')">Email is required.</p>
+            <p class="error-message" *ngIf="f['email'].hasError('email')">Enter a valid email format.</p>
+          </div>
+  
+          <div class="form-group relative">
+            <label>Password <span class="text-red-500">*</span></label>
+            <div class="relative">
+              <input [type]="showPassword ? 'text' : 'password'" formControlName="password" class="form-input pr-10"
+                placeholder="Enter a strong password"
+                [class.invalid]="f['password'].invalid && (f['password'].dirty || f['password'].touched)" />
+              <button type="button" class="eye-icon absolute right-3 top-1/2 transform -translate-y-1/2" (click)="togglePassword()">
+                <i [class]="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+              </button>
+            </div>
+
+            <div class="text-right mt-1">
+                <a [routerLink]="['/', AUTH_ROUTES.ROOT, AUTH_ROUTES.FORGOT_PASSWORD]" class="text-sm text-blue-700 hover:underline">
+                  Forgot Password?
+                </a>
+              </div>
+  
+            <!-- Error Messages -->
+            <p class="error-message" *ngIf="f['password'].hasError('required')">Password is required.</p>
+          </div>
+
+        <!-- Submit Button -->
+        <div class="flex justify-center">
+          <button type="submit" class="submit-button" [disabled]="signinForm.invalid">
+            Log in
+          </button>
+        </div>
+  
+  
+        <!-- Social Login -->
+        <div class="social-login-container">
+          <button type="button" class="social-button google"><i class="fab fa-google mr-1"></i> Signin with
+            Google</button>
+          <button type="button" class="social-button facebook"><i class="fab fa-facebook mr-1"></i> Signin with
+            Facebook</button>
+        </div>
+  
+        <!-- Don't have an account? -->
+        <p class="text-center text-gray-600 dark:text-gray-300 mt-3">
+          Create an account? <a [routerLink]="['/', AUTH_ROUTES.ROOT, AUTH_ROUTES.REGISTER]" class="text-blue-700">Signup</a>
+        </p>
+  
+      </form>
+    </div>
+  </div>

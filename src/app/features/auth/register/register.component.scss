@@ -1,58 +1,73 @@
-@import '../../../styles/themes.scss';
-@import '../../../styles/typography.scss';
-
 .register-container {
-  @apply flex items-center justify-center h-screen;
+  @apply flex justify-center items-center min-h-screen p-4;
+}
 
-  .register-box {
-    @apply w-full max-w-md bg-white p-6 rounded-lg shadow-md;
+.register-card {
+  @apply dark:bg-gray-800 p-6 rounded-lg shadow-lg w-full max-w-2xl;
+}
 
-    .logo-container {
-      @apply flex justify-center mb-4;
+/* Form Row (Two Fields in a Row) */
+.form-row {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-4;
+}
 
-      .logo {
-        @apply w-32 h-auto;
-      }
-    }
+.form-group {
+  @apply mb-4;
+}
 
-    .form-group {
-      @apply mb-4;
+.form-input {
+  @apply w-full p-2 border rounded-md transition-all;
+  @apply text-gray-900 bg-white dark:text-gray-200 dark:bg-gray-700 dark:border-gray-600;
+}
 
-      label {
-        @apply block font-medium mb-1;
-      }
+.form-input.invalid {
+  @apply border-red-500;
+}
 
-      input, select {
-        @apply w-full p-2 border rounded;
-      }
+.error-message {
+  @apply text-red-500 text-sm mt-1 hidden;
+}
 
-    //   .invalid {
-    //     @apply border-error;
-    //   }
+.form-input.invalid + .error-message {
+  display: block;
+}
 
-      .error {
-        @apply  text-sm mt-1;
-      }
-    }
+.form-group {
+  position: relative;
+}
 
-    .btn-register {
-      @apply w-full text-white py-2 rounded-md  disabled:bg-gray-400;
-    }
+.eye-icon {
+  @apply text-gray-500 hover:text-gray-700 focus:outline-none;
+}
 
-    .social-login {
-      @apply text-center mt-4;
+.submit-button {
+  @apply w-full p-2 rounded-md cursor-pointer disabled:opacity-50  
+         text-white font-semibold transition-all duration-300 block mx-auto;
 
-      p {
-        @apply  mb-2;
-      }
+  /* Light Mode */
+  @apply bg-blue-600 hover:bg-blue-700 active:bg-blue-800;
 
-      .btn-social {
-        @apply w-full flex items-center justify-center py-2 mt-2 rounded-md text-white font-medium;
+  /* Dark Mode */
+  @apply dark:bg-green-500 dark:hover:bg-green-600 dark:active:bg-green-700;
+}
 
-        i {
-          @apply mr-2;
-        }
-      }
-    }
-  }
+
+.social-login-container {
+  @apply flex justify-center space-x-4 mt-4;
+}
+
+.social-button {
+  @apply p-2 rounded-md flex items-center justify-center text-white w-1/2 transition-all;
+}
+
+.google {
+  @apply bg-red-500 hover:bg-red-600;
+}
+
+.facebook {
+  @apply bg-blue-600 hover:bg-blue-700;
+}
+
+.tooltip {
+  @apply underline decoration-dotted cursor-pointer;
 }

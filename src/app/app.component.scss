@@ -1,0 +1,7 @@
+main {
+    position: relative; // Ensures loader stays inside main
+  }
+  
+  .main-blur {
+    pointer-events: none; // Disables interaction while loading
+  }
